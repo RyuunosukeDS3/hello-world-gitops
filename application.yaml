@@ -10,7 +10,7 @@ spec:
     namespace: hello-world
   sources:
     - chart: hello-world
-      repoURL: "git@github.com:RyuunosukeDS3/hello-world-gitops.git"
+      repoURL: "https://ryuunosukeds3.github.io/hello-world-charts/"
       targetRevision: ""
       helm:
         releaseName: hello-world
