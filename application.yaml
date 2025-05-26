@@ -15,7 +15,7 @@ spec:
       helm:
         releaseName: hello-world
         valueFiles:
-          - $main/hello-world/helm/hello-world-values.yaml
+          - ./hello-world/helm/hello-world-values.yaml
   syncPolicy:
     automated:
       prune: true
