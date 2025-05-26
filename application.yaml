@@ -11,7 +11,7 @@ spec:
   sources:
     - chart: hello-world
       repoURL: "git@github.com:RyuunosukeDS3/hello-world-gitops.git"
-      targetRevision: 0.0.1
+      targetRevision: ""
       helm:
         releaseName: hello-world
         valueFiles:
