@@ -4,9 +4,9 @@ metadata:
   name: hello-world
   namespace: argocd
 spec:
-  project: ryuunosuke
+  project: hello-world
   destination:
-    name: ryuunosuke-cluster
+    name: raspberry-cluster
     namespace: hello-world
   sources:
     - repoURL: git@github.com:RyuunosukeDS3/hello-world-gitops.git
