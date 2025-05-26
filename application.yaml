@@ -9,13 +9,14 @@ spec:
     name: ryuunosuke-cluster
     namespace: hello-world
   sources:
-    - chart: hello-world
-      repoURL: "https://ryuunosukeds3.github.io/hello-world-charts/"
+    - ref: main
+      chart: hello-world
+      repoURL: https://ryuunosukeds3.github.io/hello-world-charts
       targetRevision: "0.1.3"
       helm:
         releaseName: hello-world
         valueFiles:
-          - ./hello-world/helm/hello-world-values.yaml
+          - $main/hello-world/helm/hello-world-values.yaml
   syncPolicy:
     automated:
       prune: true
