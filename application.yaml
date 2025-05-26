@@ -9,8 +9,12 @@ spec:
     name: ryuunosuke-cluster
     namespace: hello-world
   sources:
-    - ref: main
-      chart: hello-world
+    - repoURL: git@github.com:RyuunosukeDS3/hello-world-gitops.git
+      path: "hello-world/k8s"
+      targetRevision: main
+      ref: main
+      name: main
+    - chart: hello-world
       repoURL: https://ryuunosukeds3.github.io/hello-world-charts
       targetRevision: "0.1.3"
       helm:
