@@ -11,7 +11,7 @@ spec:
   sources:
     - chart: hello-world
       repoURL: "https://ryuunosukeds3.github.io/hello-world-charts/"
-      targetRevision: ""
+      targetRevision: "0.1.1"
       helm:
         releaseName: hello-world
         valueFiles:
