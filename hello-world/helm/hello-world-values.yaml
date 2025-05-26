@@ -41,8 +41,6 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
-        - path: /api/
-          pathType: ImplementationSpecific
   tls:
     - secretName: hello-world-tls
       hosts:
