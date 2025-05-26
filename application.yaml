@@ -6,7 +6,7 @@ metadata:
 spec:
   project: hello-world
   destination:
-    name: raspberry-cluster
+    name: microk8s-cluster
     namespace: hello-world
   sources:
     - repoURL: git@github.com:RyuunosukeDS3/hello-world-gitops.git
