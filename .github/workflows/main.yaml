@@ -1,0 +1,21 @@
+name: Deploy to ArgoCD
+
+on:
+  push:
+    paths:
+      - 'application.yaml'
+
+jobs:
+  upsert_hello_world:
+    name: Upsert Hello World
+    runs-on: ubuntu-latest
+    container: bitnami/argo-cd
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Upsert Apps on ArgoCD
+        run: |
+          argocd login ${{ secrets.ARGOCD_SERVER }} --username ${{ secrets.ARGOCD_USERNAME }} --password ${{ secrets.ARGOCD_PASSWORD }} --grpc-web
+          argocd app create --upsert -f application.yaml --grpc-web
+  

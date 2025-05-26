@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-world
+  namespace: argocd
+spec:
+  project: ryuunosuke
+  destination:
+    name: ryuunosuke-cluster
+    namespace: hello-world
+  sources:
+    - chart: hello-world
+      repoURL: "git@github.com:RyuunosukeDS3/hello-world-gitops.git"
+      targetRevision: 0.0.1
+      helm:
+        releaseName: hello-world
+        valueFiles:
+          - $main/hello-world/helm/hello-world-values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
