@@ -17,6 +17,21 @@ frontend:
     type: ClusterIP
     # This sets the service port (default: 4200 for Angular dev server)
     port: 4200
+  ingress:
+    enabled: true
+    className: "nginx"
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    hosts:
+      - host: hello.mizika.duckdns.org
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: hello-world-tls
+        hosts:
+          - hello.mizika.duckdns.org
 backend:
   image:
     repository: ryuunosukeds3/hello-world-backend
@@ -29,19 +44,18 @@ backend:
     type: ClusterIP
     # This sets the service port (default: 4200 for Angular dev server)
     port: 3000
-# This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
-ingress:
-  enabled: true
-  className: "nginx"
-  annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-  hosts:
-    - host: hello.mizika.duckdns.org
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls:
-    - secretName: hello-world-tls
-      hosts:
-        - hello.mizika.duckdns.org
+  ingress:
+    enabled: true
+    className: "nginx"
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    hosts:
+      - host: api.hello.mizika.duckdns.org
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: api-hello-world-tls
+        hosts:
+          - api.hello.mizika.duckdns.org
